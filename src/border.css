@@ -1,0 +1,9 @@
+.react-border__in {
+    pointer-events: none;
+}
+
+.react-border__stroke {
+    stroke: red;
+    stroke-width: 4px;
+    stroke-dasharray: 5 10;
+}

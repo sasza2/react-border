@@ -2,7 +2,9 @@ import React, { Fragment, useRef } from 'react'
 import PropTypes from 'prop-types'
 import ResizeDetector from 'react-resize-detector'
 
-const Border = ({ children }) => {
+import './border.css'
+
+const Border = ({ children, radius, stroke, strokeWidth, strokeDasharray }) => {
   const svgRef = useRef()
   const rectRef = useRef()
   return (
@@ -14,15 +16,23 @@ const Border = ({ children }) => {
           if (svgRef.current && rectRef.current){
             svgRef.current.setAttribute('width', `${width}px`)
             svgRef.current.setAttribute('height', `${height}px`)
-            rectRef.current.setAttribute('width', `${width - 4}px`)
-            rectRef.current.setAttribute('height', `${height - 4}px`)
+            rectRef.current.setAttribute('width', `${width - strokeWidth}px`)
+            rectRef.current.setAttribute('height', `${height - strokeWidth}px`)
           }
+
+          const style = {
+            fill: 'none',
+            stroke,
+            'stroke-width': strokeWidth,
+            'stroke-dasharray': strokeDasharray
+          }
+
           return (
            <Fragment>
               {children}
-              <svg className='react-border__stroke' ref={svgRef}>
-                <g style={{ stroke: '#009900', 'stroke-width': 4, 'stroke-dasharray': '10 5', fill: 'none'}}>
-                  <rect ref={rectRef} rx="4" x="2" y="2" style={{fill: 'none'}}/>
+              <svg className='react-border__in' ref={svgRef}>
+                <g className='react-border__stroke' style={style}>
+                  <rect ref={rectRef} rx={radius} x={strokeWidth/2} y={strokeWidth/2} style={{fill: 'none'}}/>
                 </g>
               </svg>
            </Fragment>
@@ -35,6 +45,10 @@ const Border = ({ children }) => {
 
 Border.propTypes = {
   children: PropTypes.node.isRequired,
+  radius: PropTypes.number,
+  stroke: PropTypes.string,
+  strokeWidth: PropTypes.number,
+  strokeDasharray: PropTypes.string,    
 }
 
 export default Border
