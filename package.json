@@ -4,8 +4,29 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --mode=production",
+    "lint": "eslint src --fix"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "react-resize-detector": "^4.2.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-react": "^7.6.3",
+    "babel-eslint": "^10.0.3",
+    "babel-loader": "^8.0.6",
+    "eslint": "^6.5.1",
+    "eslint-plugin-react": "^7.16.0",
+    "prop-types": "^15.0.0",
+    "react": "16.8.6"
+  },
+  "peerDependencies": {
+    "prop-types": "^15.0.0",
+    "react": ">=16.8.6",
+    "react-dom": ">=16.8.6"
+  }
 }
