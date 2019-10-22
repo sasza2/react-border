@@ -6,40 +6,42 @@ import './border.css'
 
 const CLASS_NAME = 'react-border'
 
-const Border = ({ children, className, radius, stroke, strokeWidth, strokeDasharray }) => {
+const Border = ({ children, className, radius, size, stroke, strokeDasharray }) => {
   const svgRef = useRef()
   const rectRef = useRef()
+
+  console.log(size)
 
   const update = (width, height) => {
     if (!svgRef.current || !rectRef.current) return
 
     svgRef.current.setAttribute('width', `${width}px`)
     svgRef.current.setAttribute('height', `${height}px`)
-    rectRef.current.setAttribute('width', `${width - strokeWidth}px`)
-    rectRef.current.setAttribute('height', `${height - strokeWidth}px`)
+    rectRef.current.setAttribute('width', `${width - size}px`)
+    rectRef.current.setAttribute('height', `${height - size}px`)
   }
 
   const renderBorder = () => {
     const style = {
-      fill: 'none',      
+      fill: 'none',
+      strokeWidth: size,
     }
 
     if (className === CLASS_NAME){
       style.stroke = stroke
-      style['stroke-width'] = strokeWidth
       style['stroke-dasharray'] = strokeDasharray
     }
 
     return (
       <g className={`${className}__border`} style={style}>
-        <rect ref={rectRef} rx={radius} x={strokeWidth/2} y={strokeWidth/2} style={style}/>
+        <rect ref={rectRef} rx={radius} x={size/2} y={size/2} style={style}/>
       </g>
     )
   } 
 
   const renderBackground = () => {
     const style = {
-      'pointer-events': 'none',
+      pointerEvents: 'none',
     }
     return (
       <svg className={`${className}__bg`} ref={svgRef} style={style}>
@@ -71,13 +73,17 @@ Border.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   radius: PropTypes.number,
-  stroke: PropTypes.string,
-  strokeWidth: PropTypes.number,
+  size: PropTypes.number,
+  stroke: PropTypes.string,  
   strokeDasharray: PropTypes.string,    
 }
 
-Border.defaultTypes = {
+Border.defaultProps = {
   className: CLASS_NAME,
+  radius: 5,
+  size: 4,
+  stroke: '#363636',  
+  strokeDasharray: '5 10',
 }
 
 export default Border

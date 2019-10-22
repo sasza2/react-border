@@ -1,7 +1,14 @@
-.react-border__in {
+.react-border {
+    position: relative;
+}
+
+.react-border__bg {
+    position: absolute;
+    top: 0px;
+    left: 0px;
     pointer-events: none;
 }
 
-.react-border__stroke {
+.react-border__border {
     fill: none;
 }
