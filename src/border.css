@@ -3,7 +3,5 @@
 }
 
 .react-border__stroke {
-    stroke: red;
-    stroke-width: 4px;
-    stroke-dasharray: 5 10;
+    fill: none;
 }
