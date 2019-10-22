@@ -10,5 +10,7 @@
 }
 
 .react-border__border {
+    stroke: #363636;
+    stroke-dasharray: 5 10;
     fill: none;
 }

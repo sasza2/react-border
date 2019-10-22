@@ -1,16 +1,20 @@
-import React, { Fragment, useRef } from 'react'
+import React, { Fragment, useCallback, useRef } from 'react'
 import PropTypes from 'prop-types'
 import ResizeDetector from 'react-resize-detector'
 
 import './border.css'
 
-const CLASS_NAME = 'react-border'
+const CLASS_NAME_DEFAULT = 'react-border'
 
-const Border = ({ children, className, radius, size, stroke, strokeDasharray }) => {
+const Border = ({ children, className, radius, size }) => {
   const svgRef = useRef()
   const rectRef = useRef()
 
-  console.log(size)
+  const elementClassName = useCallback((postfix) => {
+    const classes = [`${CLASS_NAME_DEFAULT}${postfix}`]
+    if (className) classes.push(`${className}${postfix}`)
+    return classes.join(' ')
+  }, className)
 
   const update = (width, height) => {
     if (!svgRef.current || !rectRef.current) return
@@ -27,31 +31,21 @@ const Border = ({ children, className, radius, size, stroke, strokeDasharray }) 
       strokeWidth: size,
     }
 
-    if (className === CLASS_NAME){
-      style.stroke = stroke
-      style['stroke-dasharray'] = strokeDasharray
-    }
-
     return (
-      <g className={`${className}__border`} style={style}>
+      <g className={elementClassName('__border')} style={style}>
         <rect ref={rectRef} rx={radius} x={size/2} y={size/2} style={style}/>
       </g>
     )
   } 
 
-  const renderBackground = () => {
-    const style = {
-      pointerEvents: 'none',
-    }
-    return (
-      <svg className={`${className}__bg`} ref={svgRef} style={style}>
-        {renderBorder()}
-      </svg>
-    )
-  }
+  const renderBackground = () => (
+    <svg className={elementClassName('__bg')} ref={svgRef}>
+      {renderBorder()}
+    </svg>
+  )
 
   return (
-    <div className={className}>
+    <div className={elementClassName('')}>
       <ResizeDetector
         handleWidth
         handleHeight
@@ -74,16 +68,12 @@ Border.propTypes = {
   className: PropTypes.string,
   radius: PropTypes.number,
   size: PropTypes.number,
-  stroke: PropTypes.string,  
-  strokeDasharray: PropTypes.string,    
 }
 
 Border.defaultProps = {
-  className: CLASS_NAME,
+  className: '',
   radius: 5,
   size: 4,
-  stroke: '#363636',  
-  strokeDasharray: '5 10',
 }
 
 export default Border
