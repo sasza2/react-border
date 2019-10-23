@@ -32,7 +32,7 @@ const Border = ({ children, className, radius, size }) => {
     }
 
     return (
-      <g className={elementClassName('__border')} style={style}>
+      <g className={elementClassName('__in')} style={style}>
         <rect ref={rectRef} rx={radius} x={size/2} y={size/2} style={style}/>
       </g>
     )

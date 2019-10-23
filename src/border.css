@@ -9,7 +9,7 @@
     pointer-events: none;
 }
 
-.react-border__border {
+.react-border__in {
     stroke: #363636;
     stroke-dasharray: 5 10;
     fill: none;
