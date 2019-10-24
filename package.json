@@ -1,14 +1,28 @@
 {
   "name": "react-border",
   "version": "1.0.0",
-  "description": "",
+  "description": "React library for creating SVG border around children property.",
+  "keywords": [
+    "border",
+    "react",
+    "borders",
+    "stroke",    
+    "svg"
+  ],
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode=production",
     "lint": "eslint src --fix"
   },
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sasza2/react-border.git"
+  },
+  "author": "sasza",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sasza2/react-border/issues"
+  },
   "dependencies": {
     "react-resize-detector": "^4.2.1"
   },
