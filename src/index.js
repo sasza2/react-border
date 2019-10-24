@@ -14,7 +14,7 @@ const Border = ({ children, className, radius, size }) => {
     const classes = [`${CLASS_NAME_DEFAULT}${postfix}`]
     if (className) classes.push(`${className}${postfix}`)
     return classes.join(' ')
-  }, className)
+  }, [className])
 
   const update = (width, height) => {
     if (!svgRef.current || !rectRef.current) return
