@@ -1,6 +1,6 @@
 {
   "name": "react-border",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React library for creating SVG border around children property.",
   "keywords": [
     "border",
@@ -9,7 +9,7 @@
     "stroke",    
     "svg"
   ],
-  "main": "index.js",
+  "main": "dist/main.js",
   "scripts": {
     "build": "webpack --mode=production",
     "lint": "eslint src --fix"
