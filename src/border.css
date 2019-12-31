@@ -1,4 +1,5 @@
 .react-border {
+    display: inline-block;
     position: relative;
 }
 
