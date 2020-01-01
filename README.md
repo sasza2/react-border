@@ -1,6 +1,9 @@
 # react-border
 React library for creating SVG border around children property.
 
+# Demo
+https://codesandbox.io/s/competent-haslett-99502
+
 # Installation
 
 ```sh
@@ -100,23 +103,5 @@ Border.defaultProps = {
 ```css
 .example-4__in {
   stroke: #851de0;
-}
-```
-
-## Example 5
-<p align='center'>
-  <img src='./docs/5.png' alt='Example 5' />
-</p>
-
-```html
-<Border className='example-5' radius={5}>
-  Lorem ipsum dolor sit amet
-</Border>
-```
-
-```css
-.example-5__in {
-  stroke-dasharray: 6 2;
-  stroke: #ff8080;
 }
 ```

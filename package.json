@@ -1,6 +1,6 @@
 {
   "name": "react-border",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "React library for creating SVG border around children property.",
   "keywords": [
     "border",
